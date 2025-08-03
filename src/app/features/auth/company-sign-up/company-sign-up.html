@@ -1,1 +1,75 @@
-<p>company-sign-up works!</p>
+<div class="container mt-5" dir="rtl">
+  <h2 class="text-center mb-4">تسجيل شركة</h2>
+
+  <div class="alert alert-danger" *ngIf="backendErrors.length">
+    <ul class="mb-0">
+      <li *ngFor="let err of backendErrors">{{ err }}</li>
+    </ul>
+  </div>
+
+  <div class="alert alert-success text-center" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <div
+    class="alert alert-danger text-center"
+    *ngIf="errorMessage && !backendErrors.length"
+  >
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="arabicName" class="form-label">الاسم بالعربية</label>
+      <input type="text" class="form-control" formControlName="arabicName" />
+      <div class="text-danger" *ngIf="hasError('arabicName', 'required')">
+        الاسم بالعربية مطلوب
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="englishName" class="form-label">الاسم بالإنجليزية</label>
+      <input type="text" class="form-control" formControlName="englishName" />
+      <div class="text-danger" *ngIf="hasError('englishName', 'required')">
+        الاسم بالإنجليزية مطلوب
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">البريد الإلكتروني</label>
+      <input type="email" class="form-control" formControlName="email" />
+      <div class="text-danger" *ngIf="signupForm.get('email')?.touched">
+        <div *ngIf="hasError('email', 'required')">البريد الإلكتروني مطلوب</div>
+        <div *ngIf="hasError('email', 'email')">
+          صيغة البريد الإلكتروني غير صحيحة
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">رقم الهاتف</label>
+      <input type="text" class="form-control" formControlName="phoneNumber" />
+    </div>
+
+    <div class="mb-3">
+      <label for="websiteUrl" class="form-label">رابط الموقع</label>
+      <input type="text" class="form-control" formControlName="websiteUrl" />
+    </div>
+
+    <div class="mb-3">
+      <label for="logo" class="form-label">شعار الشركة</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)" />
+    </div>
+
+    <div class="mb-3 text-center" *ngIf="logoPreview">
+      <img
+        [src]="logoPreview"
+        alt="معاينة الشعار"
+        class="img-thumbnail"
+        style="max-width: 200px"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">تسجيل</button>
+  </form>
+</div>

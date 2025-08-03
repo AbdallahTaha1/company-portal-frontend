@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class Company {
-  private readonly apiUrl = 'https://localhost:7187/api/Company';
+export class CompanyService {
+  private readonly apiUrl = 'https://localhost:7187/api/Companies';
 
   constructor(private http: HttpClient) {}
 
   getMyCompany(): Observable<CompanyDto> {
-    return this.http.get<CompanyDto>(`${this.apiUrl}/me`);
+    return this.http.get<CompanyDto>(`${this.apiUrl}/my`);
   }
 }

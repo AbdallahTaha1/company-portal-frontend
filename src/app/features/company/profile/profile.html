@@ -1,1 +1,61 @@
-<p>profile works!</p>
+<div class="container mt-5" *ngIf="!loading && company" dir="rtl">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0 p-4">
+        <!-- شعار الشركة -->
+        <div *ngIf="company.logoUrl" class="text-center mb-4">
+          <img
+            [src]="fullLogoUrl"
+            alt="Logo"
+            class="rounded-circle border"
+            style="width: 120px; height: 120px; object-fit: cover"
+          />
+        </div>
+
+        <!-- بيانات الشركة -->
+        <div class="d-flex flex-column gap-3">
+          <div
+            *ngIf="company.arabicName"
+            class="d-flex justify-content-between border-bottom pb-2"
+          >
+            <strong>🏢 اسم الشركة بالعربي:</strong>
+            <span>{{ company.arabicName }}</span>
+          </div>
+
+          <div
+            *ngIf="company.englishName"
+            class="d-flex justify-content-between border-bottom pb-2"
+          >
+            <strong>🏢 اسم الشركة بالإنجليزي:</strong>
+            <span>{{ company.englishName }}</span>
+          </div>
+
+          <div
+            *ngIf="company.phoneNumber"
+            class="d-flex justify-content-between border-bottom pb-2"
+          >
+            <strong>📞 رقم الهاتف:</strong>
+            <span>{{ company.phoneNumber }}</span>
+          </div>
+
+          <div
+            *ngIf="company.websiteUrl"
+            class="d-flex justify-content-between border-bottom pb-2"
+          >
+            <strong>🌐 الموقع الإلكتروني:</strong>
+            <a [href]="company.websiteUrl" target="_blank" rel="noopener">{{
+              company.websiteUrl
+            }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- تحميل -->
+<div class="text-center mt-5" *ngIf="loading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">جاري التحميل...</span>
+  </div>
+</div>

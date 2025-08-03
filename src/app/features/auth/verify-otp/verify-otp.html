@@ -1,1 +1,28 @@
-<p>verify-otp works!</p>
+<div class="container mt-5">
+  <h3 class="text-center mb-4">أدخل رمز التحقق</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">رمز OTP</label>
+      <input
+        type="text"
+        formControlName="otp"
+        class="form-control"
+        [class.is-invalid]="
+          form.controls['otp'].invalid && form.controls['otp'].touched
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="form.controls['otp'].touched && form.controls['otp'].invalid"
+      >
+        الرمز مطلوب
+      </div>
+    </div>
+
+    <button class="btn btn-primary w-100" [disabled]="form.invalid">
+      تحقق
+    </button>
+  </form>
+  <div class="alert alert-primary" role="alert">Your OTP is {{ otp }}</div>
+</div>

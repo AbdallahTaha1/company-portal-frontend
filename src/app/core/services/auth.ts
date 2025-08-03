@@ -10,13 +10,14 @@ import { LoginDto } from '../dtos/login.dto';
 @Injectable({
   providedIn: 'root',
 })
-export class Auth {
+export class AuthService {
   private apiUrl = 'https://localhost:7187/api/auth';
 
   constructor(private http: HttpClient) {}
 
   Companysignup(dto: CompanySignUpDto): Observable<{ message: string }> {
     const formData = this.convertToFormData(dto);
+    console.log(dto);
     return this.http.post<{ message: string }>(
       `${this.apiUrl}/CompanySignUp`,
       formData
@@ -78,7 +79,7 @@ export class Auth {
     formData.append('englishName', dto.englishName);
     if (dto.phoneNumber) formData.append('phoneNumber', dto.phoneNumber);
     if (dto.websiteUrl) formData.append('websiteUrl', dto.websiteUrl);
-    if (dto.logo) formData.append('logoFile', dto.logo);
+    if (dto.logo) formData.append('Logo', dto.logo);
     formData.append('email', dto.email);
     return formData;
   }

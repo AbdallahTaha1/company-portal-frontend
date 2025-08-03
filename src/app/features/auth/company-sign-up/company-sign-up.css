@@ -1,0 +1,20 @@
+/* company-sign-up.css */
+form {
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+}
+
+.img-thumbnail {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px;
+  background-color: #f8f8f8;
+}

@@ -4,6 +4,7 @@ import { VerifyOtp } from './features/auth/verify-otp/verify-otp';
 import { SetPassword } from './features/auth/set-password/set-password';
 import { Login } from './features/auth/login/login';
 import { Profile } from './features/company/profile/profile';
+import { Home } from './features/pages/home/home';
 
 export const routes: Routes = [
   { path: 'signup', component: CompanySignUp },
@@ -11,5 +12,5 @@ export const routes: Routes = [
   { path: 'set-password', component: SetPassword },
   { path: 'login', component: Login },
   { path: 'company-profile', component: Profile },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: Home },
 ];
