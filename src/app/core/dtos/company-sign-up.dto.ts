@@ -1,4 +1,4 @@
-export interface CompanySignUp {
+export interface CompanySignUpDto {
   arabicName: string;
   englishName: string;
   email: string;

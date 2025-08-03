@@ -1,4 +1,4 @@
-export interface SetPassword {
+export interface SetPasswordDto {
   email: string;
   password: string;
 }

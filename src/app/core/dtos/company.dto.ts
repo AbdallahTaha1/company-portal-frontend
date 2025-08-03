@@ -1,4 +1,4 @@
-export interface Company {
+export interface CompanyDto {
   id: string;
   arabicName: string;
   englishName: string;

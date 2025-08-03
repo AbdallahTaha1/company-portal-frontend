@@ -1,4 +1,4 @@
-export interface AuthResult {
+export interface AuthResultDto {
   userId: string;
   name: string;
   email: string;
